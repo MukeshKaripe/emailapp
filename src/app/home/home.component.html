@@ -1,0 +1,65 @@
+<div class="main-content-wrapper">
+   <!-- <mat-slide-toggle>Slide me!</mat-slide-toggle> -->
+  
+    <mat-sidenav-container>
+        <mat-sidenav>    </mat-sidenav>
+        <mat-sidenav-content>
+           
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+      <div class="side-wrapper">
+         <ul>
+            <li>
+               <a  routerLink="/inbox" mat-raised-button color="primary" ><span> inbox</span></a>
+            </li>
+            <li>
+                <a routerLink="/sent" mat-raised-button color="primary" ><span>sent</span></a>
+             </li>
+             <li>
+                <a href="" mat-raised-button color="primary"  routerLink="/draft"  ><span >draft</span></a>
+             </li>
+             <li>
+                <a >  <button mat-raised-button color="primary" (click)="openDialog()" >create</button></a>
+               
+                  
+                  <!-- <p-button  label="Submit"></p-button>
+                  <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="binary"></p-checkbox>
+                  <p-calendar [(ngModel)]="date"></p-calendar>
+                  <p-button  type="button" (click)="showDialog()" icon="pi pi-external-link" label="Show"></p-button> -->
+<p-dialog header="Header" [(visible)]="visible" [style]="{width: '50vw'}">
+   <form action="form" [formGroup]="reactiveForm"  >
+      <mat-dialog-content>
+          <p>
+              <mat-form-field>
+                  <input type="text" matInput placeholder="to" formControlName="to" >
+                  <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+          </p>
+          <p>
+              <mat-form-field>
+                  <input type="text" matInput placeholder="Subject" formControlName="subject" >
+                  <mat-icon matSuffix>drafts</mat-icon>
+              </mat-form-field>
+          </p>
+          <p>
+              <mat-form-field>
+                  <textarea cols="20" rows="5" type="text" matInput  formControlName="message"></textarea>
+              </mat-form-field>
+          </p>
+      
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+          <button mat-raised-button color="primary" (click)=" onSubmit()" [disabled]="reactiveForm.invalid" >send</button>
+          <button mat-raised-button color="warn" mat-dialog-close>cancel</button>
+      
+      </mat-dialog-actions>
+      </form>
+</p-dialog>
+                
+             </li>
+        </ul>
+      </div>
+      <div class="main-wrapper">
+         <router-outlet></router-outlet>
+      </div>
+</div>
